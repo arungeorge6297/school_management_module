@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+     <data>
+        <!--Email template -->
+        <record id="email_employe_template" model="mail.template">
+            <field name="name">Employe: Send by email</field>
+            <field name="model_id" ref="school.model_employee_table"/>
+            <field name="email_from">school@gmail</field>
+            <field name="email_to">{{object.email}}</field>
+            <field name="subject">Employee Card (Ref {{object.employee_id}}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear
+                        <t t-if="object.employe_name">
+                            <t t-out="object.employe_name"/>
+                        </t>
+                        <br /><br />
+                        here is your employe card with reference <t t-out="object.employee_id"/>
+                        <br /><br />
+                        Age : <t t-out="object.age"/>
+
+                        Contact Number : <t t-out="object.phone"/>
+                        <br /><br />
+
+                    </p>
+                </div>
+                <field name="report_template" ref="report_employe_card"/>
+                <field name="report_name">Employe Card <t t-out="object.employee_id"/></field>
+            </field>
+        </record>
+     </data>
+
+</odoo>

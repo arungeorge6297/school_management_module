@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="teacher_model_action" model="ir.actions.act_window">
+        <field name="name">Teacher Detail</field>
+        <field name="res_model">employee.table</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('position', '=' ,'teacher')]</field>
+    </record>
+    <menuitem id="teaching_model_menu_action"
+              name="Teaching Staff"
+              parent="employe_menu_root"
+              action="teacher_model_action"
+              sequence="3"/>
+
+</odoo>

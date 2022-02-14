@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <template id="report_employe_detail">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <div class="oe structure"/>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <center>
+                                    <table class="table table-condensed" style="border: 3px solid black !important;">
+                                        <tr>
+                                            <td width="40">
+                                                <p style="text-align:center;padding-top:10px;">
+                                                    <img t-if="not doc.empimage"
+                                                         t-att-src="'/web/static/img/placeholder.png'" heigt="120"
+                                                         border="1" width="140"/>
+                                                    <img t-if="doc.empimage"
+                                                         t-att-src="'data:image/png;base64,%s' % to_text(doc.empimage)"
+                                                         height="120" border="1" width="140"/>
+                                                </p>
+                                            </td>
+                                        <tr>
+                                            <td width="60">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <span>
+                                                                <strong>Name:</strong>
+                                                            </span>
+
+                                                            <span t-field="doc.employe_name"/>
+
+                                                            <p>
+                                                                <span>
+                                                                    <strong>ID:</strong>
+                                                                </span>
+                                                                <span t-field="doc.employee_id"></span>
+                                                            </p>
+                                                            <span>
+                                                                <strong>AGE:</strong>
+                                                            </span>
+
+                                                            <span t-field="doc.age"></span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                        </tr>
+
+                                    </table>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+
+                </t>
+            </t>
+    </template>
+</odoo>

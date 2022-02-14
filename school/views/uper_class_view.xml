@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="uperclass_model_action" model="ir.actions.act_window">
+        <field name="name">student Detail</field>
+        <field name="res_model">studenttable.model</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('class_number', '&gt;', 4), ('class_number', '&lt;=', 7)]</field>
+    </record>
+    <menuitem id="uperclass_model_menu_action"
+              name="UP Students"
+              parent="student_menu_root"
+              action="uperclass_model_action"
+              sequence="5"/>
+
+</odoo>

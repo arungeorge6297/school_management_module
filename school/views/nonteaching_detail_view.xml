@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="nonteaching_model_action" model="ir.actions.act_window">
+        <field name="name">Non Teaching Staf</field>
+        <field name="res_model">employee.table</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('position', '!=' ,'teacher')]</field>
+         </record>
+    <menuitem id="nonteaching_model_menu_action"
+           name="Non Teaching Staff"
+           parent="employe_menu_root"
+           action="nonteaching_model_action"
+           sequence="5"/>
+</odoo>

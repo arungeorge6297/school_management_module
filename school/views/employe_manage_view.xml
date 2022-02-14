@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="school_inherit" model="ir.ui.view">
+        <field name="name">school inherit</field>
+        <field name="model">employee.table</field>
+        <field name="inherit_id" ref="school.employe_manage_form_view"/>
+        <field name="arch" type="xml">
+            <field name="school_name" position="after">
+                <field name="student_refence_no"/>
+            </field>
+        </field>
+    </record>
+    <record id="employee_manage_tree_view" model="ir.ui.view">
+        <field name="name">employe tree view</field>
+        <field name="model">employee.table</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="school_name"/>
+                <field name="employe_name"/>
+                <field name="employee_id"/>
+                <field name="position"/>
+                <field name="place"/>
+                <field name="address"/>
+                <field name="salary"/>
+                <field name="dob"/>
+                <field name="age"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="employe_manage_form_view" model="ir.ui.view">
+        <field name="name">employe form view</field>
+        <field name="model">employee.table</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="cancel_action" type="object" string="cancel" class="oe_highlight" states="new" confirm="are you sure to cancel this?"/>
+                    <button name="canceled_action" string="canceled" class="oe_highlight" states="canceled"/>
+
+                    <field name="state" widget="statusbar" class="oe_avatar"/>
+                     <button name="action_send_card" type="object" string="Send By Email" class="oe_highlight"/>
+
+
+                </header>
+<!--                <sheet>-->
+<!--                    <field name="name"/>-->
+<!--                </sheet>-->
+
+                <sheet>
+                    <field name="empimage" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="employe_name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="school_name"/>
+                            <field name="employee_id"/>
+                            <field name="position"/>
+                            <field name="age"/>
+                            <field name="dob"/>
+                        </group>
+                        <group>
+                            <field name="place"/>
+                            <field name="salary"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                         <group>
+                            <span class="o_form_label o_td_label" name="address_name">
+                                <b>Address</b>
+                            </span>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state" placeholder="State"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                            <page string = "Details">
+                                <group>
+                                    <field name="employe_name"/>
+                                    <field name="school_name"/>
+                                </group>
+<!--                                <group>-->
+<!--                                    <field name="street"/>-->
+<!--                                    <field name="street2"/>-->
+<!--                                    <field name="city"/>-->
+<!--                                    <field name="state_id"/>-->
+<!--                                    <field name="zip"/>-->
+<!--                                    <field name="country_id"/>-->
+<!--                                </group>-->
+                            </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="employe_kanban" model="ir.ui.view">
+        <field name="name">employe kanban view</field>
+        <field name="model">employee.table</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="employe_name"/>
+                <field name="school_name"/>
+                <field name="employee_id"/>
+                <field name="position"/>
+                <field name="age"/>
+                <field name="phone"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_details">
+                            <strong class="o_kanban_record_title">
+                                <field name="employe_name"/>
+                            </strong>
+                            <div class="o_kanban_tag_section"/>
+                            <ul>
+                                <li>School Name :<field name="school_name"/></li>
+                                <li>employe id :<field name="employee_id"/></li>
+                                <li>position :<field name="position"/></li>
+                                <li>Age :<field name="age"/></li>
+                                <li>Phone number<field name="phone"/></li>
+                            </ul>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="employe_model_action" model="ir.actions.act_window">
+        <field name="name">Employe Detail</field>
+        <field name="res_model">employee.table</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+</odoo>
